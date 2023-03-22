@@ -1,25 +1,32 @@
 <template>
   <user-data @add-user="AddUser"></user-data>
   <ul>
-    <active-user
+    <active-user :name="user.name" :age="user.age"></active-user>
+    <!-- <active-user
       v-for="user in users"
       :key="user.name"
       :name="user.name"
       :age="user.age"
-    ></active-user>
+    ></active-user> -->
   </ul>
 </template>
 <script>
+import ActiveUser from "./components/ActiveUser.vue";
 export default {
+  components: { ActiveUser },
   data() {
     return {
-      users: [],
+      // users: [],
+      user: { name: "Jinal", age: "18" },
     };
   },
   methods: {
     AddUser(user) {
-      if (user) {
-        this.users.push(user);
+      if (user.name && user.age) {
+        // this.name = user.name;
+        // this.age = user.age;
+        this.user = user;
+        // this.users.push(user);
       }
     },
   },
